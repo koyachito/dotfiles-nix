@@ -1,10 +1,6 @@
 modmap:
-  - name: Global
-    remap:
-      CapsLock:
-        held: Ctrl_L
-        alone: Esc
-  - name: Katakana -> Super
+  # CapsLock is handled by Sway XKB + Fcitx5, independent of xremap.
+  - name: Henkan -> Super
     remap:
       KEY_HENKAN: KEY_LEFTMETA
   - name: Right Alt

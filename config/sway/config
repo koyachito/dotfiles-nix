@@ -19,6 +19,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 input type:keyboard {
     repeat_delay 300
     repeat_rate 25
+    # Lock-free IME key; configure Menu as Fcitx5 TriggerKeys (Phase 3).
+    xkb_options caps:menu
 }
 
 input type:touchpad {
@@ -28,14 +30,14 @@ input type:touchpad {
 focus_follows_mouse no
 
 # startup
-exec_always pkill -x swayidle; exec swayidle -w \
-    timeout 900 'swaylock -f' \
-    timeout 1800 'systemctl suspend' \
-    before-sleep 'swaylock -f'
+exec_always sh -c 'pkill -x swayidle 2>/dev/null; exec swayidle -w \
+    timeout 900 "swaylock -f" \
+    timeout 1800 "systemctl suspend" \
+    before-sleep "swaylock -f"'
 
 exec_always sh -c 'pkill -x waybar 2>/dev/null; exec waybar -c ~/.config/waybar/config-sway -s ~/.config/waybar/style.css'
 exec_always sh -c 'pkill -x mako 2>/dev/null; exec mako'
-exec_always sh -c 'pkill -x fcitx5 2>/dev/null; exec fcitx5'
+exec fcitx5 -d
 exec_always sh -c 'pkill -x wlsunset 2>/dev/null; exec wlsunset -T 6500 -t 2800 -l 19.4326 -L -99.1332'
 
 # Application shortcuts

@@ -1,5 +1,10 @@
 # dotfiles
 
+Fedora Sway Spin + standalone Home Manager への移行は
+[Fedora導入手順](docs/fedora.md) を参照してください。
+`install-common.sh` / `install-sway.sh` は旧Arch用です。Fedoraでは実行しません。
+以下は従来のArch環境の説明です。
+
 ![Lint](https://github.com/koyachito/dotfiles/actions/workflows/lint.yml/badge.svg)
 ![Verify packages](https://github.com/koyachito/dotfiles/actions/workflows/verify-packages.yml/badge.svg)
 

@@ -1,0 +1,17 @@
+name: Evaluate standalone Home Manager
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+        with:
+          determinate: false
+      - name: Evaluate both migration stages
+        run: |
+          nix eval --raw .#homeConfigurations.linux-base.activationPackage.drvPath
+          nix eval --raw .#homeConfigurations.fedora-base.activationPackage.drvPath
+          nix eval --raw .#homeConfigurations.fedora.activationPackage.drvPath

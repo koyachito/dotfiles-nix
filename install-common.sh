@@ -2,6 +2,10 @@
 
 set -euo pipefail
 
+# shellcheck source=/dev/null
+source /etc/os-release
+[[ "$ID" == arch ]] || { echo 'Arch only. Fedora: see docs/fedora.md' >&2; exit 1; }
+
 sudo pacman -S --needed \
 	base \
 	base-devel \

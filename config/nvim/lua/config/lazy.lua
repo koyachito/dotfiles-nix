@@ -12,4 +12,15 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins")
+-- Home Manager keeps ~/.config in the read-only Nix store. Keep the writable
+-- plugin lock in state, seeded from the repository on first use.
+local lockfile = vim.fn.stdpath("state") .. "/lazy-lock.json"
+if vim.fn.filereadable(lockfile) == 0 then
+    local seed = vim.fn.stdpath("config") .. "/lazy-lock.json"
+    if vim.fn.filereadable(seed) == 1 then
+        vim.fn.mkdir(vim.fn.stdpath("state"), "p")
+        vim.fn.writefile(vim.fn.readfile(seed), lockfile)
+    end
+end
+
+require("lazy").setup("plugins", { lockfile = lockfile })

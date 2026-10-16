@@ -1,0 +1,16 @@
+[Hotkey]
+EnumerateWithTriggerKeys=False
+
+[Hotkey/TriggerKeys]
+0=Menu
+1=Control+space
+2=Zenkaku_Hankaku
+
+[Hotkey/AltTriggerKeys]
+
+[Hotkey/EnumerateGroupForwardKeys]
+
+[Hotkey/EnumerateGroupBackwardKeys]
+
+[Behavior]
+ActiveByDefault=False
